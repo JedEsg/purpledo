@@ -1,0 +1,485 @@
+*{
+    margin: 0;
+    padding: 0;    
+    scroll-behavior: smooth;
+    
+}
+
+.hide{display: none !important;}
+
+html{background-color:rgb(207, 197, 224);}
+
+.header, #colon, .dos, .createTodo, .menu, .login{
+    font-family: Montserrat, sans-serif;
+}
+
+.clock{font-family: Sofia Sans Semi Condensed;}
+
+.login{
+    display: block;
+    position: fixed;
+    min-height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.623);
+    z-index: 1000;
+}
+
+.login-container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 15rem;
+    width: 20rem;
+    background-color: white;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.808);
+    text-align:center;
+}
+
+.login-container div{
+    display: flex;
+    justify-content: center;
+}
+
+.login-container div h1{
+    position: relative;
+    top: 1rem;
+    font-weight: 600;
+    color: rgb(34, 31, 58);
+}
+
+.login-logo{
+    width:2rem; 
+    height: 2rem;
+    position: relative;
+    top: 0.9rem;
+    left: 0.5rem;
+}
+
+.login-btn-container{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    top: 2.5rem;
+    
+}
+
+.login-btn-container button{
+    width: 14rem;
+    height: 2rem;
+    margin-block: 0.5rem;
+    padding-bottom: 0.25rem;
+    color: rgb(34, 31, 58);
+}
+
+.login-btn-container button img{
+    width: 1rem;
+    height: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    position: relative
+}
+
+.header{
+    display: block;
+    width: 100%;
+    height: 51px;
+    background-color: rgb(34, 31, 58);
+    background-position: center;
+    position: fixed;
+    overflow-x: hidden;
+    z-index: 100;
+    box-shadow: 0 0 5px rgb(0, 0, 0, 0.5);
+
+}
+
+#bars {
+    color: #fff;
+    display: none;
+    margin: 15px;
+    cursor: pointer;
+}
+
+#logo{
+    height: 30px;
+    position: relative;
+    top: 10px;
+    left: 20px;
+}
+
+.todaybtn{
+    position: relative;
+    padding: 5px 11px;
+    text-decoration: none;
+    list-style: none;
+    background: transparent;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    cursor: pointer;
+    top: -1px;
+    left: 120px;
+    transition: 400ms;
+}
+
+.todaybtn:hover{
+    border: 1px solid rgba(255, 255, 255, 0);
+    color: rgb(34, 31, 58);
+    -webkit-text-stroke-width: 0.7px;
+    -webkit-text-stroke-color: rgb(34, 31, 58);
+    background-color: #fff;
+    transition: 300ms;
+
+}
+
+nav{
+    margin-right: 180px;
+    justify-content: space-between;
+    float: right;
+    
+}
+
+.navlinks-menu{display: none;}
+
+.navlinks{
+    position: relative;
+    text-align: right;
+    top: 14px;
+}
+
+.navlinks ul li{
+    list-style: none;
+    display: inline-block;
+    position: relative;
+
+}
+
+.navlinks ul li a{
+    color: #fff;
+    text-decoration: none;
+    margin-left: 30px;
+    margin-top: 14px;
+    font-size: 12.5px;
+    font-weight:600;
+
+}
+
+.navlinks ul li a:hover{
+    -webkit-text-stroke-width: 0.3px;
+    -webkit-text-stroke-color: #fff;
+    transition: 400ms ease;
+}
+
+.fill{
+    display: none;
+}
+
+
+#user{
+    height: 28px;
+    top: 11px;
+    position: absolute;
+    right: 40px;
+    padding: 0;
+    margin: 0;
+    
+}
+
+.clock{
+    display: block;
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(43,41,61,0.60),rgba(43,41,61,0.60)), url(pics/mainbackground.png);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    z-index: 10;
+}
+
+
+.dos{
+    display: block;
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgb(207, 197, 224, 0.1),rgb(207, 197, 224, 0.1));
+    position: relative;
+    overflow-x: hidden;
+}
+
+.dos h2{
+    position: absolute;
+    top: 4.5rem;
+    right: 2.5rem;
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: white;
+}
+
+.clock_grid{
+    display: grid;
+    position: absolute;
+    grid-template-rows: 1fr 5fr 2fr;
+    top:23%;
+    justify-items: center;
+    width: 100%;
+}
+
+#greeting{
+    font-size: 30px;
+    font-weight: 100;
+}
+
+#greeting p i{font-weight: 200;}
+
+.clock_grid div{
+    color: #fff;
+}
+
+
+.time{
+    font-size: 160px;
+    top: 0;
+    font-weight: 400;
+}
+
+.mer_container{
+    position: absolute;
+    top: 49%;
+    margin-left: 28rem;
+    font-size: 30px;
+    font-weight: 400;
+    
+}
+
+#hr{margin-right: -1.75rem;}
+#min{margin-left: -1.75rem;}
+#weekday{font-weight: 300;}
+
+.date{
+    font-size: 23px;
+    font-weight: 200;
+    align-content: center;
+    margin-top: -0.25rem;
+}
+
+#colon{
+    position: relative;
+    bottom: 0.75rem;
+    font-size:120px;
+    font-weight: 100;
+}
+
+#day{padding-left:0.75rem;}
+.hidden{visibility:hidden;}
+
+#quote{
+    left: 50%;
+    bottom: 2rem;
+    transform: translateX(-50%);
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    font-weight: 100;
+    font-style: italic;
+    
+}
+
+#quote a{text-decoration: none;
+    color: white; 
+    cursor: default; 
+    position: relative;
+    word-wrap: normal;
+    height: 1.25rem;
+    }
+
+#quote a *{text-align: center;}
+
+.taskContainer{
+    position:absolute;
+    display: flex;
+    top: 10rem;
+    left: 5rem;
+}
+
+.taskCard{
+    position: relative;
+    background-color: white;
+    width: 12rem;
+    padding: 1rem;
+    margin-inline: 1rem;
+    height:18rem;
+    border-radius: 0.5rem;
+    
+}
+
+.redtag{
+box-shadow: inset 0 -2.75rem 0 -2rem tomato;
+}
+
+.yellowtag{
+    box-shadow: inset 0 -2.75rem 0 -2rem rgb(243, 225, 32);
+}
+
+.greentag{
+    box-shadow: inset 0 -2.75rem 0 -2rem greenyellow;
+}
+
+.bluetag{
+    box-shadow: inset 0 -2.75rem 0 -2rem rgb(29, 146, 255);
+}
+
+.purpletag{
+    box-shadow: inset 0 -2.75rem 0 -2rem rgb(170, 66, 255);
+}
+
+.taskCard div{top:-0.5rem; margin-top: 1.25rem; margin-left: 0.5rem;}
+
+.taskCard div *{position: relative;}
+
+.topContainer{
+    display: flex;
+    width: 100%;
+    }
+
+.topContainer input{
+    width: 2rem;
+    flex: 1;
+    height: 2rem;
+}
+
+.topContainer h3{
+    flex-grow: 1;
+    flex-wrap: wrap;
+    padding-left: 1rem;
+    width: 9ch;
+    top: -0.3rem;
+}
+
+#comment{overflow-y: auto;
+height: 7.5ch;}
+
+.Tags ul{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Tags ul li{
+    background-color: darkviolet;
+    color: white;
+    position: relative;
+    margin-right:0.2rem;
+    margin-top:0.2rem;
+    padding: 0.2rem 0.4rem;
+    list-style: none;
+    font-size: 10px;
+    flex-basis: auto;
+    border-radius: 2px;
+}
+
+
+@media(max-width: 750px){
+
+    #logo{
+        position: absolute;
+        align-items: center;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+    #bars{
+        display: inline-block;
+    }
+
+    .navlinks-menu{
+        position: relative;
+        top: 3.25rem;
+        left: 2rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .navlinks-menu ul li{
+        position: relative;
+        margin-block: 2rem;
+        font-size: 1rem;
+        list-style: none;
+    }
+
+    .navlinks-menu ul li a{
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .menu{
+        display: block;
+        position: fixed;
+        min-height: 100vh;
+        left: -400px;
+        width: 150px;
+        background-color: rgba(32, 23, 61, 0.95);
+        z-index: 20;
+        transition: 400ms;
+    
+    }
+
+    .todaybtn{
+        left: 0px;
+        font-size: 10px;
+        vertical-align: middle;
+        padding: 5px 9px;
+        border: 1px solid rgba(255, 255, 255, 0);
+        color: rgb(34, 31, 58);
+        font-weight: 800;
+        background-color: #fff;
+    }
+
+    .todaybtn:hover{-webkit-text-stroke-width: 0;
+        -webkit-text-stroke-color: transparent;}
+
+    .fill{
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background-color: rgba(255, 255, 255, 0);
+    }
+
+    .time{
+        font-size: 80px;
+    }
+    
+    .date{
+        font-size: 16px;
+    }
+
+    #colon{
+        bottom: 0.5rem;
+        font-size: 50px;
+    }
+
+    .mer_container{
+        top: 47%;
+        font-size: 15px;
+        margin-left: 14rem;
+    }
+
+    #user{display: none;}
+    .navlinks{display: none;}
+
+    #hr{margin-right: -1rem;}
+    #min{margin-left: -1rem;}
+
+    #quote{font-size:12px;}
+
+    #greeting{font-size:16px;}
+
+    .taskContainer{
+        left: 50%;
+        transform: translate(-50%,0);
+    }
+
+}
+
