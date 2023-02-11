@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0:">
+    <title>PurpleDo - Your Simple Everyday To-Do List</title>
+    <link rel="shortcut icon" href="pics/logowcolor.png">
+    <link rel = "stylesheet" href = "style.css">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <section class="login">
+        <div class="login-container">
+            <h3>LOGIN <img src="pics/logowcolor.png"></h3>
+            <div class="login-input-container">
+                <input type="email"></input>
+                <input type="password"></input>
+                <button id="login-btn">Login</button>
+            </div>
+            <h4>or login with</h4>
+            <div class="login-buttons">
+                <button id="google-login"><img src="pics/googlelogo.png"></button>
+                <button><img src="pics/facebooklogo.png"></button>
+                <button></button>
+            </div>
+            <div class="sign-up-redirect">
+            <p>Don't have an account?</p>
+            <a href="">Sign-Up Here</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="header">
+        <i class="fa fa-bars" id="bars" onclick="toggleMenu()"></i>
+        <a href="index.html" class="logo"><img src="pics/logowcolor.png" id="logo"></a>
+        <a class="todaybtn" href=#today >Today</a>
+        <nav>
+            <div class="navlinks">
+                <ul>
+                    <li><a href=#clock>Clock</a></li>
+                    <li><a href="">Do's</a></li>
+                    <li><a href="">Calendar</a></li>
+                    <li><a href="">Help</a></li>
+                </ul>
+            </div>
+        </nav>
+        <a href=""><img src="pics/user.png" id="user"></a>
+    </section>
+
+    <section class="menu" id="menu">
+        <div class="navlinks-menu">
+            <ul>
+                <li><a href=#clock>Clock</a></li>
+                <li><a href="">Do's</a></li>
+                <li><a href="">Calendar</a></li>
+                <li><a href="">Settings</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="clock" id="clock">
+        <div class="clock_grid">
+            <div class="greeting"><span id="greeting"></span><span id="greeting-name"><i>Jed</i></span></div>
+            <div class="time">
+                <span id="hr"></span>
+                <span id="colon"></span>
+                <span id="min"></span>
+            </div>
+            <div class="mer_container"><span id="mer"></span></div>
+            <div class="date">
+                <span id="weekday"></span>
+                <span id="day"></span>
+                <span id="month"></span>
+                <span id="year"></span>
+            </div>
+        </div>
+        <div id="quote"></div>
+    </section>
+
+    <section class="today" id="today">
+        <button id="google-login" class="hide"></button>
+        <h2>Today</h2>
+        <button class="task-btn hide" id="left-btn">&lt</button>
+        <button class="task-btn" id="right-btn">&gt</button>
+            <div class="taskContainer">
+                <div class="taskCard redtag notPicked">
+                    <div class="topContainer">
+                        <input type="checkbox"></input>
+                        <h3>Create a todo list app for website. </h3>
+                    </div>
+                    <div id="comment"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, nisi?</p></div>
+                    <div class="Tags">
+                        <ul>
+                            <li class="">Tag 1 &nbsp;</li>
+                            <li class="">Tag 2 &nbsp;</li>
+                            <li class="">Tag 3 &nbsp;</li>
+                            <li class="">Tag 4 &nbsp;</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    </section>
+     
+    <!--
+    <section class="calendar">
+
+    </section>
+
+    <section class="footer">
+
+    </section>-->
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    
+
+
+
+    <script src="bundle.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,3 +1,5 @@
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Front-End Script ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
 // menu open/close function
 let open = 0;
 let menu = document.getElementById("menu");
@@ -15,10 +17,19 @@ function toggleMenu() {
     }
 }
 
+// access quotable api to generate a quote on load and on click
+let getQuote = () => {
+    fetch('https://api.quotable.io/random?&maxLength=50')
+    .then(response => response.json())
+    .then(json => document.getElementById("quote").innerHTML = `<a onclick="getQuote()"><q>${json.content}</q><p>- ${json.author}</p></a>`)
+    
+}
+
+getQuote();
+
 // months and days in a week list
 let months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
 let weekdays = ["Sunday", "Monday", "Tuesday","Wednesday","Thursday","Friday", "Saturday"];
-let name = ""
 
 // clock and clock greeting update every second
 function updateClock(){
@@ -48,28 +59,18 @@ function updateClock(){
     document.getElementById("day").innerHTML = (day).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
     document.getElementById("month").innerHTML = months[month];
     document.getElementById("year").innerHTML = year;
+
     if (mer == "AM"){
-    document.getElementById("greeting").innerHTML = `<p>Good Morning&nbsp <i>${name}</i></p>`
-    }
-    else if (hr < 5){
-        document.getElementById("greeting").innerHTML = `<p>Good Afternoon&nbsp <i>${name}</i></p>`
-    }
-    else{
-        document.getElementById("greeting").innerHTML = `<p>Good Evening&nbsp <i>${name}</i></p>`
-    }
+        document.getElementById("greeting").innerHTML = "Good Morning";
+        }
+        else if (hr < 5){
+        document.getElementById("greeting").innerHTML = "Good Afternoon";
+        }
+        else{
+        document.getElementById("greeting").innerHTML = "Good Evening";
+        }
 }
 
-// show colon delay to match clock loading
+// update clock every second
+setTimeout(function(){document.getElementById("colon").innerHTML = ":"}, 1000);
 setInterval(updateClock, 1000);
-setTimeout(function(){document.getElementById("colon").innerHTML = ":"}, 1000)
-
-// access quotable api to generate a quote on load and on click
-let getQuote = () => {
-    fetch('https://api.quotable.io/random?&maxLength=50')
-    .then(response => response.json())
-    .then(json => document.getElementById("quote").innerHTML = `<a onclick="getQuote()"><q>${json.content}</q><p>- ${json.author}</p></a>`)
-    
-}
-
-getQuote()
-

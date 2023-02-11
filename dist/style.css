@@ -1,3 +1,5 @@
+
+/* ~~~~~~~~~~~~~~~ Reset ~~~~~~~~~~~~~~~~~~~*/
 *{
     margin: 0;
     padding: 0;    
@@ -5,92 +7,189 @@
     
 }
 
+/* ~~~~~~~~~~~~~~~  Init Class and Variables ~~~~~~~~~~~~~~~~~~~*/
 .hide{display: none !important;}
 
-html{background-color:rgb(207, 197, 224);}
-
-.header, #colon, .dos, .createTodo, .menu, .login{
-    font-family: Montserrat, sans-serif;
+.redtag{
+    box-shadow: inset 0 -2.75rem 0 -2rem tomato;
+    }
+    
+.yellowtag{
+    box-shadow: inset 0 -2.75rem 0 -2rem rgb(243, 225, 32);
 }
 
-.clock{font-family: Sofia Sans Semi Condensed;}
+.greentag{
+    box-shadow: inset 0 -2.75rem 0 -2rem greenyellow;
+}
+
+.bluetag{
+    box-shadow: inset 0 -2.75rem 0 -2rem rgb(29, 146, 255);
+}
+
+.purpletag{
+    box-shadow: inset 0 -2.75rem 0 -2rem rgb(170, 66, 255);
+}
+
+:root{
+    --neutral: rgb(163, 83, 173);
+    --dark-indigo: rgb(34, 31, 58);
+    --light: rgb(207, 197, 224);
+    --overlay: rgba(43,41,61,0.60);
+    --dark-violet: rgba(32, 23, 61, 0.95);
+}
+
+/*~~~~~~~~~~~~~~~~~~  Setting fonts, and HTML and BODY styles~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+html{background-color: var(--light)}
+
+body{
+    font-family: Montserrat, sans-serif; 
+}
+
+body *::selection{
+    background: rgb(177, 177, 177);
+}
+
+.clock, .clock *, .task-btn{font-family: Sofia Sans Semi Condensed !important;}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~ Login Styles  ~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 .login{
-    display: block;
+    display: flex;
     position: fixed;
+    z-index: 1000;
     min-height: 100vh;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.623);
-    z-index: 1000;
+    background-color: var(--overlay);
+    align-items: center;
+    justify-content: center;
+
 }
 
 .login-container{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    height: 15rem;
-    width: 20rem;
-    background-color: white;
-    border-radius: 0.25rem;
-    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.808);
-    text-align:center;
-}
-
-.login-container div{
     display: flex;
+    width: 20rem;
+    background-color: #fff;
+    border-radius: 5px;
+    align-items: center;
     justify-content: center;
+    padding: 1.25rem;
+    flex-direction: column;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
-.login-container div h1{
+.login-container > h3 {
+    margin-bottom: 2.5rem;
     position: relative;
-    top: 1rem;
-    font-weight: 600;
-    color: rgb(34, 31, 58);
 }
 
-.login-logo{
-    width:2rem; 
+.login-container > h3 > img{
     height: 2rem;
     position: relative;
-    top: 0.9rem;
-    left: 0.5rem;
+    top: 0.49rem;
+    left: 0.25rem;
 }
 
-.login-btn-container{
+.login-input-container{
     display: flex;
-    position: relative;
     flex-direction: column;
     align-items: center;
-    top: 2.5rem;
-    
 }
 
-.login-btn-container button{
-    width: 14rem;
-    height: 2rem;
-    margin-block: 0.5rem;
-    padding-bottom: 0.25rem;
-    color: rgb(34, 31, 58);
+.login-input-container > input{
+    margin-bottom: 1.5rem;
+    height: 1.5rem;
+    width: 12rem;
+    font-size: 1rem;
+    text-align: center;
+    border: transparent;
+    border-bottom: var(--dark-indigo) solid 1px;
+    outline: transparent;
 }
 
-.login-btn-container button img{
-    width: 1rem;
-    height: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    position: relative
+.login-input-container > input:focus{
+    border-bottom: var(--dark-indigo) solid 1.5px;
 }
 
+#login-btn{
+    position: relative;
+    top: 0.4rem;
+    width: 4rem;
+    height: 1.5rem;
+    border: transparent;
+    background-color: var(--neutral);
+    color: white;
+    box-shadow:
+                0 2px 12px var(--neutral),
+                0 2px 6px var(--light);
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+#login-btn:hover{
+    background-color: rgb(178, 170, 194);
+    box-shadow:
+                0 2px 6px var(--light);
+}
+
+
+.login-container > h4{
+    position:relative; 
+    top: 1.5rem; 
+    font-weight: 400;
+    margin-top: 1.5rem;
+}
+
+.login-buttons {
+    position: relative;
+    margin-top: 2.25rem;
+}
+
+.login-buttons > button{
+    height: 2.5rem;
+    aspect-ratio: 1;
+    margin-inline: 0.25rem;
+    border-radius: 50%;
+    border: transparent;
+    transition: 0.3s;
+}
+
+.login-buttons > button:hover{
+    background-color: rgb(255, 255, 255);
+}
+
+.login-buttons img{
+    width: 2.5rem;
+    aspect-ratio: 1;
+}
+
+.sign-up-redirect{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.sign-up-redirect *{
+    font-size: 0.75rem;
+}
+
+.sign-up-redirect > a{
+    color: darkgoldenrod;
+    text-decoration: underline;
+}
+
+/* ~~~~~~~~~~~~~~~~  Header Styles  ~~~~~~~~~~~~~~~~~~~~~~~~~*/
 .header{
     display: block;
+    position: absolute;
     width: 100%;
     height: 51px;
-    background-color: rgb(34, 31, 58);
+    background-color: var(--dark-indigo);
     background-position: center;
     position: fixed;
     overflow-x: hidden;
-    z-index: 100;
+    z-index: 200;
     box-shadow: 0 0 5px rgb(0, 0, 0, 0.5);
 
 }
@@ -128,19 +227,17 @@ html{background-color:rgb(207, 197, 224);}
 
 .todaybtn:hover{
     border: 1px solid rgba(255, 255, 255, 0);
-    color: rgb(34, 31, 58);
+    color: var(--dark-indigo);
     -webkit-text-stroke-width: 0.7px;
-    -webkit-text-stroke-color: rgb(34, 31, 58);
+    -webkit-text-stroke-color: var(--dark-indigo);
     background-color: #fff;
     transition: 300ms;
-
 }
 
 nav{
     margin-right: 180px;
     justify-content: space-between;
     float: right;
-    
 }
 
 .navlinks-menu{display: none;}
@@ -186,37 +283,19 @@ nav{
     right: 40px;
     padding: 0;
     margin: 0;
-    
 }
+
+/* ~~~~~~~~~~~~~~~~~~~  Clock Section Styles  ~~~~~~~~~~~~~~~~~~~~~ */
 
 .clock{
     display: block;
     min-height: 100vh;
     width: 100%;
-    background-image: linear-gradient(rgba(43,41,61,0.60),rgba(43,41,61,0.60)), url(pics/mainbackground.png);
+    background-image: linear-gradient( var(--overlay),var(--overlay)), url(pics/mainbackground.png);
     background-position: center;
     background-size: cover;
     position: relative;
     z-index: 10;
-}
-
-
-.dos{
-    display: block;
-    min-height: 100vh;
-    width: 100%;
-    background-image: linear-gradient(rgb(207, 197, 224, 0.1),rgb(207, 197, 224, 0.1));
-    position: relative;
-    overflow-x: hidden;
-}
-
-.dos h2{
-    position: absolute;
-    top: 4.5rem;
-    right: 2.5rem;
-    font-size: 3rem;
-    text-transform: uppercase;
-    color: white;
 }
 
 .clock_grid{
@@ -228,12 +307,18 @@ nav{
     width: 100%;
 }
 
-#greeting{
+.greeting{display: flex;}
+
+.greeting *{
+    position: relative;
     font-size: 30px;
     font-weight: 100;
 }
 
-#greeting p i{font-weight: 200;}
+#greeting-name *{
+    font-weight: 200;
+    margin-left: 0.75rem;
+}
 
 .clock_grid div{
     color: #fff;
@@ -241,7 +326,7 @@ nav{
 
 
 .time{
-    font-size: 160px;
+    font-size: 10rem;
     top: 0;
     font-weight: 400;
 }
@@ -250,7 +335,7 @@ nav{
     position: absolute;
     top: 49%;
     margin-left: 28rem;
-    font-size: 30px;
+    font-size: 2rem;
     font-weight: 400;
     
 }
@@ -260,7 +345,7 @@ nav{
 #weekday{font-weight: 300;}
 
 .date{
-    font-size: 23px;
+    font-size: 1.5rem;
     font-weight: 200;
     align-content: center;
     margin-top: -0.25rem;
@@ -269,7 +354,7 @@ nav{
 #colon{
     position: relative;
     bottom: 0.75rem;
-    font-size:120px;
+    font-size: 7.5rem;
     font-weight: 100;
 }
 
@@ -282,7 +367,7 @@ nav{
     transform: translateX(-50%);
     position: absolute;
     color: white;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 100;
     font-style: italic;
     
@@ -298,10 +383,69 @@ nav{
 
 #quote a *{text-align: center;}
 
+
+/* ~~~~~~~~~~~~~~~~~~~~~  Today Section Styles  ~~~~~~~~~~~~~~~~~~~~~  */
+
+.today{
+    display: block;
+    min-height: 33rem;
+    width: 100%;
+    background-image: var(--light);
+    position: relative;
+    overflow: hidden;
+    position: relative;
+    top: -2rem;
+}
+
+.today > h2{
+    position: absolute;
+    top: 4rem;
+    right: 3rem;
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: white;
+    user-select: none;
+}
+
+.task-btn{
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+    border: transparent;
+    background-color: rgba(43,41,61,0.40);
+    top: 18.5rem;
+    transition: 0.3s;
+    font-size: 2rem;
+    font-weight: 100;
+    color: white;
+    text-align: center;
+}
+
+.task-btn:hover{
+    background-color: rgba(43,41,61,0.60);
+}
+
+#right-btn{
+    right: 1rem;
+}
+
+#right-btn:hover{
+    right: 0.8rem;
+}
+
+#left-btn{
+    left: 1rem;
+}
+
+#left-btn:hover{
+    left: 0.8rem;
+}
+
 .taskContainer{
     position:absolute;
     display: flex;
-    top: 10rem;
+    top: 10.5rem;
     left: 5rem;
 }
 
@@ -309,31 +453,10 @@ nav{
     position: relative;
     background-color: white;
     width: 12rem;
+    height: 18rem;
     padding: 1rem;
     margin-inline: 1rem;
-    height:18rem;
     border-radius: 0.5rem;
-    
-}
-
-.redtag{
-box-shadow: inset 0 -2.75rem 0 -2rem tomato;
-}
-
-.yellowtag{
-    box-shadow: inset 0 -2.75rem 0 -2rem rgb(243, 225, 32);
-}
-
-.greentag{
-    box-shadow: inset 0 -2.75rem 0 -2rem greenyellow;
-}
-
-.bluetag{
-    box-shadow: inset 0 -2.75rem 0 -2rem rgb(29, 146, 255);
-}
-
-.purpletag{
-    box-shadow: inset 0 -2.75rem 0 -2rem rgb(170, 66, 255);
 }
 
 .taskCard div{top:-0.5rem; margin-top: 1.25rem; margin-left: 0.5rem;}
@@ -368,18 +491,19 @@ height: 7.5ch;}
 }
 
 .Tags ul li{
-    background-color: darkviolet;
+    background-color: var(--neutral);
     color: white;
     position: relative;
     margin-right:0.2rem;
     margin-top:0.2rem;
     padding: 0.2rem 0.4rem;
     list-style: none;
-    font-size: 10px;
+    font-size: 0.6rem;
     flex-basis: auto;
     border-radius: 2px;
 }
 
+/* ~~~~~~~~~~~~~~~~~  Media Query for Phone Devices ~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 @media(max-width: 750px){
 
@@ -420,19 +544,19 @@ height: 7.5ch;}
         min-height: 100vh;
         left: -400px;
         width: 150px;
-        background-color: rgba(32, 23, 61, 0.95);
-        z-index: 20;
+        background-color: var(--dark-violet);
+        z-index: 100;
         transition: 400ms;
     
     }
 
     .todaybtn{
         left: 0px;
-        font-size: 10px;
+        font-size: 0.6rem;
         vertical-align: middle;
         padding: 5px 9px;
         border: 1px solid rgba(255, 255, 255, 0);
-        color: rgb(34, 31, 58);
+        color: var(--dark-indigo);
         font-weight: 800;
         background-color: #fff;
     }
@@ -448,21 +572,21 @@ height: 7.5ch;}
     }
 
     .time{
-        font-size: 80px;
+        font-size: 5rem;
     }
     
     .date{
-        font-size: 16px;
+        font-size: 1rem;
     }
 
     #colon{
         bottom: 0.5rem;
-        font-size: 50px;
+        font-size: 3rem;
     }
 
     .mer_container{
         top: 47%;
-        font-size: 15px;
+        font-size: 1rem;
         margin-left: 14rem;
     }
 
@@ -472,9 +596,9 @@ height: 7.5ch;}
     #hr{margin-right: -1rem;}
     #min{margin-left: -1rem;}
 
-    #quote{font-size:12px;}
+    #quote{font-size:0.75rem;}
 
-    #greeting{font-size:16px;}
+    .greeting *{font-size:1rem;}
 
     .taskContainer{
         left: 50%;
@@ -483,3 +607,8 @@ height: 7.5ch;}
 
 }
 
+@media(max-height: 30rem){
+
+    .clock{min-height: 39rem;}
+
+}
