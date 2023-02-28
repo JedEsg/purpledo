@@ -1,6 +1,6 @@
 
 /* ~~~~~~~~~~~~~~~ Reset ~~~~~~~~~~~~~~~~~~~*/
-*{
+*, *::after, *::before{
     margin: 0;
     padding: 0;    
     scroll-behavior: smooth;
@@ -11,24 +11,10 @@
 .hide{display: none !important;}
 
 .redtag{
-    box-shadow: inset 0 -2.75rem 0 -2rem tomato;
+    box-shadow: 
+        -1px 5px 10px 2px rgba(0, 0, 0, 0.4),
+        inset 0 -3.5rem 0 -2.75rem tomato;
     }
-    
-.yellowtag{
-    box-shadow: inset 0 -2.75rem 0 -2rem rgb(243, 225, 32);
-}
-
-.greentag{
-    box-shadow: inset 0 -2.75rem 0 -2rem greenyellow;
-}
-
-.bluetag{
-    box-shadow: inset 0 -2.75rem 0 -2rem rgb(29, 146, 255);
-}
-
-.purpletag{
-    box-shadow: inset 0 -2.75rem 0 -2rem rgb(170, 66, 255);
-}
 
 :root{
     --neutral: rgb(163, 83, 173);
@@ -63,7 +49,6 @@ body *::selection{
     background-color: var(--overlay);
     align-items: center;
     justify-content: center;
-
 }
 
 .login-container{
@@ -178,6 +163,139 @@ body *::selection{
     color: darkgoldenrod;
     text-decoration: underline;
 }
+
+/* ~~~~~~~~~~~~~~~~  Create Todo Styles  ~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.create-container{
+    position: fixed;
+    left: 2rem;
+    bottom: 1.75rem;
+    z-index: 100;
+}
+
+#create-grid{
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: auto;
+    padding: 1rem;
+    border-radius: 4px;
+    gap: 0.1rem;
+    box-shadow: 0px 7px 29px 0px rgba(100, 100, 111, 0.5);
+    opacity: 0;
+    top: 2rem;
+    transition: 0.3s ease-in-out;
+    position: relative;
+    pointer-events: none;
+}
+
+#create-grid > *{
+    margin: 0.5rem;
+    display: block;
+}
+
+.create-grid-open{
+    opacity: 1 !important;
+    top: 0 !important;
+    pointer-events: auto !important;
+}
+
+#task-name-input{
+    grid-column-start: 1;
+    grid-column-end: 5;
+    height: 2rem;
+    font-size: 1.25rem;
+    border: transparent;
+    border-bottom: var(--dark-indigo) solid 1px;
+    outline: transparent;
+    padding-left: 0.25rem;
+    padding-bottom: 0.1rem;
+}
+
+#task-name-input:focus{
+    box-shadow: 0 1px 0 0 var(--dark-indigo);
+    position: relative;
+}
+
+#task-tags-input{
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+#task-date-input{
+    grid-column-start: 4;
+    width: 6rem;
+    justify-self: end;
+    font-size: 0.9;
+    text-transform: uppercase;
+    text-shadow: 0 0 0 black;
+}
+
+#task-time-input{
+    grid-column-start: 4;
+    width: 6rem;
+    justify-self: end;
+}
+
+#color-select{
+    width: 3rem;
+    height: 1.5rem;
+    grid-row-start: 4;
+}
+
+#color{
+    height: 1rem;
+    aspect-ratio: 1rem;
+    border-radius: 100%;
+    background-color: red;
+}
+
+#task-comment-input{
+    grid-row-start: 5;
+    grid-column-start:1;
+    grid-column-end: 3;
+    height: 4rem;
+    padding: 0.25rem;
+    font-size: 0.9rem;
+    font-weight: 100;
+    resize: vertical;
+}
+
+#add-confirm-btn{
+    grid-row-start: 6;
+    grid-column-end: 5;
+    height: 1.75rem;
+    width: 5.25rem;
+    margin-top: 2rem;
+    border-radius: 4px;
+    border: none;
+    justify-self: end;
+}
+
+#add-btn{
+    height: 3rem;
+    font-size: 2.5rem;
+    color: rgb(43,41,61);
+    background-color: white;
+    opacity: 0.6;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    border: transparent;
+    transition: 0.4s;
+    margin-top: 1rem;
+}
+
+#add-btn:hover{
+    opacity: 1;
+    margin-bottom: 0.3rem;
+}
+
+.add-btn-active{
+    opacity: 1 !important;
+    margin-bottom: 0.3rem;
+    transform: rotate(45deg);
+}
+
 
 /* ~~~~~~~~~~~~~~~~  Header Styles  ~~~~~~~~~~~~~~~~~~~~~~~~~*/
 .header{
@@ -301,7 +419,7 @@ nav{
 .clock_grid{
     display: grid;
     position: absolute;
-    grid-template-rows: 1fr 5fr 2fr;
+    grid-template-rows: 1fr auto 1fr;
     top:23%;
     justify-items: center;
     width: 100%;
@@ -309,13 +427,14 @@ nav{
 
 .greeting{display: flex;}
 
-.greeting *{
+#greeting{
     position: relative;
     font-size: 30px;
     font-weight: 100;
 }
 
-#greeting-name *{
+#greeting-name{
+    font-size: 30px;
     font-weight: 200;
     margin-left: 0.75rem;
 }
@@ -329,11 +448,12 @@ nav{
     font-size: 10rem;
     top: 0;
     font-weight: 400;
+    height: auto;
 }
 
 .mer_container{
     position: absolute;
-    top: 49%;
+    top: 55%;
     margin-left: 28rem;
     font-size: 2rem;
     font-weight: 400;
@@ -442,52 +562,54 @@ nav{
     left: 0.8rem;
 }
 
-.taskContainer{
+.task-container{
     position:absolute;
     display: flex;
-    top: 10.5rem;
-    left: 5rem;
+    top: 11.75rem;
+    left: 4vw;
 }
 
-.taskCard{
-    position: relative;
+.task-grid{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: 14rem;
+    padding: 1.5rem;
     background-color: white;
-    width: 12rem;
-    height: 18rem;
-    padding: 1rem;
-    margin-inline: 1rem;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
+    gap: 1rem 0.5rem;
+    margin: 1.25rem;
+    height: 12.5rem;
 }
 
-.taskCard div{top:-0.5rem; margin-top: 1.25rem; margin-left: 0.5rem;}
-
-.taskCard div *{position: relative;}
-
-.topContainer{
-    display: flex;
-    width: 100%;
-    }
-
-.topContainer input{
-    width: 2rem;
-    flex: 1;
-    height: 2rem;
+.task-grid > input{
+    height: 2.5rem;
+    width: 2.5rem;
+    align-self: center;
+    justify-self: center;
 }
 
-.topContainer h3{
-    flex-grow: 1;
-    flex-wrap: wrap;
-    padding-left: 1rem;
-    width: 9ch;
-    top: -0.3rem;
+.task-grid > h3{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    overflow: hidden;
+    font-size: 18px;
+    height: 6.25ch;
 }
 
-#comment{overflow-y: auto;
-height: 7.5ch;}
+.task-grid > p{
+    overflow-y: auto;
+    height: 7.4ch;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.Tags{
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
 
 .Tags ul{
     display: flex;
-    flex-wrap: wrap;
 }
 
 .Tags ul li{
@@ -495,7 +617,6 @@ height: 7.5ch;}
     color: white;
     position: relative;
     margin-right:0.2rem;
-    margin-top:0.2rem;
     padding: 0.2rem 0.4rem;
     list-style: none;
     font-size: 0.6rem;
@@ -545,7 +666,7 @@ height: 7.5ch;}
         left: -400px;
         width: 150px;
         background-color: var(--dark-violet);
-        z-index: 100;
+        z-index: 150;
         transition: 400ms;
     
     }
@@ -585,10 +706,13 @@ height: 7.5ch;}
     }
 
     .mer_container{
-        top: 47%;
         font-size: 1rem;
         margin-left: 14rem;
     }
+
+    #greeting, #greeting-name{font-size: 1rem;}
+
+    #greeting-name{margin-left: 0.45rem;}
 
     #user{display: none;}
     .navlinks{display: none;}
@@ -597,13 +721,6 @@ height: 7.5ch;}
     #min{margin-left: -1rem;}
 
     #quote{font-size:0.75rem;}
-
-    .greeting *{font-size:1rem;}
-
-    .taskContainer{
-        left: 50%;
-        transform: translate(-50%,0);
-    }
 
 }
 

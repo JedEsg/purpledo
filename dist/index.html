@@ -16,7 +16,8 @@
 </head>
 
 <body>
-    <section class="login">
+    
+    <section class="login hide" id="login">
         <div class="login-container">
             <h3>LOGIN <img src="pics/logowcolor.png"></h3>
             <div class="login-input-container">
@@ -35,6 +36,28 @@
             <a href="">Sign-Up Here</a>
             </div>
         </div>
+    </section>
+
+    <section>
+        <div class="create-container hide">
+            <div id="create-grid" data-create-grid>
+                <h3>Add Task</h3>
+                <input id="task-name-input">
+                <input type="search" id="task-tags-input">
+                <input type="date" id="task-date-input">
+                <select id="color-select">
+                    <option>Red</option>
+                    <option>Blue</option>
+                    <option>Green</option>
+                    <option>Orange</option>
+                </select>
+                <input type="time" id="task-time-input">
+                <textarea id="task-comment-input" maxlength="255"></textarea>
+                <button id="add-confirm-btn"></button>
+            </div>
+            <button id="add-btn" data-create-btn>+</button>
+        </div>
+        
     </section>
 
     <section class="header">
@@ -67,7 +90,7 @@
 
     <section class="clock" id="clock">
         <div class="clock_grid">
-            <div class="greeting"><span id="greeting"></span><span id="greeting-name"><i>Jed</i></span></div>
+            <div class="greeting"><span id="greeting"></span><i><span id="greeting-name"></span></i></div>
             <div class="time">
                 <span id="hr"></span>
                 <span id="colon"></span>
@@ -89,13 +112,25 @@
         <h2>Today</h2>
         <button class="task-btn hide" id="left-btn">&lt</button>
         <button class="task-btn" id="right-btn">&gt</button>
-            <div class="taskContainer">
-                <div class="taskCard redtag notPicked">
-                    <div class="topContainer">
-                        <input type="checkbox"></input>
-                        <h3>Create a todo list app for website. </h3>
+            <div class="task-container">
+                <div class="task-grid redtag">
+                    <input type="checkbox">
+                    <h3 title="Go bowling or participate in another group activity.">
+                        Go bowling or participate in another group activity. bowling or participate in another group activity</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi debitis laborum eveniet incidunt recusandae exercitationem.</p>
+                    <div class="Tags">
+                        <ul>
+                            <li class="">Tag 1 &nbsp;</li>
+                            <li class="">Tag 2 &nbsp;</li>
+                            <li class="">Tag 3 &nbsp;</li>
+                            <li class="">Tag 4 &nbsp;</li>
+                        </ul>
                     </div>
-                    <div id="comment"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, nisi?</p></div>
+                </div>
+                <div class="task-grid redtag">
+                    <input type="checkbox">
+                    <h3>Go bowling or participate in another group</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi debitis laborum eveniet incidunt recusandae exercitationem.</p>
                     <div class="Tags">
                         <ul>
                             <li class="">Tag 1 &nbsp;</li>
@@ -106,6 +141,7 @@
                     </div>
                 </div>
             </div>
+            
     </section>
      
     <!--

@@ -52,25 +52,43 @@ function updateClock(){
     let time = d.toLocaleTimeString('en-US');
     let mer = time.slice(-2);
 
-    document.getElementById("hr").innerHTML = (hr).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
-    document.getElementById("min").innerHTML = (min).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
-    document.getElementById("mer").innerHTML = mer;
-    document.getElementById("weekday").innerHTML = weekdays[weekday];
-    document.getElementById("day").innerHTML = (day).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
-    document.getElementById("month").innerHTML = months[month];
-    document.getElementById("year").innerHTML = year;
+    document.getElementById("hr").innerText = (hr).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+    document.getElementById("min").innerText = (min).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+    document.getElementById("mer").innerText = mer;
+    document.getElementById("weekday").innerText = weekdays[weekday];
+    document.getElementById("day").innerText = (day).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+    document.getElementById("month").innerText = months[month];
+    document.getElementById("year").innerText = year;
 
     if (mer == "AM"){
-        document.getElementById("greeting").innerHTML = "Good Morning";
+        document.getElementById("greeting").innerText = "Good Morning";
         }
         else if (hr < 5){
-        document.getElementById("greeting").innerHTML = "Good Afternoon";
+        document.getElementById("greeting").innerText = "Good Afternoon";
         }
         else{
-        document.getElementById("greeting").innerHTML = "Good Evening";
+        document.getElementById("greeting").innerText = "Good Evening";
         }
 }
 
 // update clock every second
-setTimeout(function(){document.getElementById("colon").innerHTML = ":"}, 1000);
+setTimeout(function(){document.getElementById("colon").innerText = ":"}, 1000);
 setInterval(updateClock, 1000);
+
+// add task toggle
+document.addEventListener('click', e => {
+    const isCreateContainer = e.target.matches('[data-create-grid]');
+    const isCreateContainerElement = e.target.matches('[data-create-grid] > *');
+    if (isCreateContainer || isCreateContainerElement) return;
+
+    const isCreateBtn = e.target.matches('[data-create-btn]');
+    const createGrid = document.getElementById('create-grid');
+    const createBtn = document.getElementById('add-btn');
+    if (!isCreateContainer && isCreateBtn){;
+        createGrid.classList.toggle('create-grid-open');
+        createBtn.classList.toggle('add-btn-active');
+    } else {
+        createGrid.classList.remove('create-grid-open');
+        createBtn.classList.remove('add-btn-active');
+    }
+})

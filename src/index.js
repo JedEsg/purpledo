@@ -2,7 +2,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+import { getFirestore, collection, addDoc, setDoc, doc } from "firebase/firestore";
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -28,16 +29,31 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
+const db = getFirestore(app);
 
 
 // Google Login On-Click
-document.getElementById("google-login").onclick = () => signInWithPopup(auth, provider)
-  .then((result) => {
-    console.log("Sign In Success");
-    const user = result.user;
-    const firstName = user.displayName.split(" ")[0];
+document.getElementById("google-login").onclick = () => signInWithPopup(auth, provider);
+
+auth.onAuthStateChanged(user => {
+  if (user){
+    console.log(user);
+    const firstName = String(user.displayName.split(" ")[0]);
+    const uId = user.uid;
+    storeUserId(uId, user.displayName)
 
     // Update Dom
-    document.getElementById("greeting-name").innerHTML = `<i>${firstName}</i>`;
-  })
+    document.getElementById("greeting-name").innerText = firstName;
+    document.getElementById("login").classList.add("hide");
+  }
+})
+
+async function storeUserId(uId, displayName){
+  await setDoc(doc(db, "users", "userData", "userIds", uId), {
+    userName : displayName
+  
+  });
+}
+
+
 });
